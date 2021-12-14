@@ -17,21 +17,16 @@ public class FindViewController {
 	HttpSession httpSession;
 	CustomerService customerService;
 	
-	@GetMapping({"", "/"})
+	@GetMapping({"", "/", "/login"})
 	public String index() {
-//		CustomerBean customerBean = (CustomerBean)httpSession.getAttribute("Login");
-//		if(customerBean == null) {
-//			return "redirect://login";
-//		} else {
 			return "index";
-//		}
 		
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/register")
 	public String login() {
 		
-		return "login";
+		return "register";
 	}
 	
 }

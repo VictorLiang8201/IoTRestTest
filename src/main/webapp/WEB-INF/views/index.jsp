@@ -38,7 +38,7 @@
 		<div id="devices"></div>
 		
 		<hr style="color: darkgreen;" size="5px">
-		<a href="#" class="text-center">回註冊頁面</a>
+		<a href="<c:url value='/register' />" class="text-center">回註冊頁面</a>
 	</div>
 	
 </body>

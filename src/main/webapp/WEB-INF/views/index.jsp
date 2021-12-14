@@ -26,14 +26,14 @@
 			Tenant Administrator: <br>
 			帳號: <input type="text" id="accountT" value="victorliang8201@gmail.com" placeholder="請輸入帳號"><br>
 			密碼: <input type="password" id="passwordT" value="ZAsw6KNji9GEcx1D" placeholder="請輸入密碼"><br>
-			<button style="margin: 5px" @click="showDevicesTenant">顯示您的Devices</button>
+			<button style="margin: 5px" @click="showDevicesTenant">顯示您的設備</button>
 		</div>
 
 		<div>
 			Customer User: <br>
 			帳號: <input type="text" id="accountC" value="t104340502@ntut.org.tw" placeholder="請輸入帳號"><br>
 			密碼: <input type="password" id="passwordC" value="hC9zuJM1oV1fRC1f" placeholder="請輸入密碼"><br>
-			<button style="margin: 5px" @click="showDevicesCustomer">顯示您的Devices</button>
+			<button style="margin: 5px" @click="showDevicesCustomer">顯示您的設備</button>
 		</div>
 		<div id="devices"></div>
 		
@@ -58,9 +58,9 @@
             			segment = `
 		    						<table border="1">
 		    							<tr>
-		    								<th>裝置擁有客戶之ID</th>
-		    								<th>裝置名稱</th>
-		    								<th>裝置類別</th>
+		    								<th>設備擁有客戶之ID</th>
+		    								<th>設備名稱</th>
+		    								<th>設備類別</th>
 		    							</tr>
     					 		  `;
 		    			for (let i = 0; i < response.devices.length; i++) {
@@ -92,9 +92,9 @@
             			segment = `
 		    						<table border="1">
 		    							<tr>
-		    								<th>裝置擁有客戶之ID</th>
-		    								<th>裝置名稱</th>
-		    								<th>裝置類別</th>
+		    								<th>設備擁有客戶之ID</th>
+		    								<th>設備名稱</th>
+		    								<th>設備類別</th>
 		    							</tr>
     					 		  `;
 		    			for (let i = 0; i < response.devices.length; i++) {

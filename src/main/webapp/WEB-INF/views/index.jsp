@@ -23,16 +23,16 @@
 <body>
 	<div id="main" align="center">
 		<div>
-			Tenant: <br>
-			帳號: <input type="text" id="accountT" value="confus8201@gmail.com" placeholder="請輸入帳號"><br>
-			密碼: <input type="password" id="passwordT" value="urPX4duVW5fHR2eU" placeholder="請輸入密碼"><br>
+			Tenant Administrator: <br>
+			帳號: <input type="text" id="accountT" value="victorliang8201@gmail.com" placeholder="請輸入帳號"><br>
+			密碼: <input type="password" id="passwordT" value="ZAsw6KNji9GEcx1D" placeholder="請輸入密碼"><br>
 			<button style="margin: 5px" @click="showDevicesTenant">顯示您的Devices</button>
 		</div>
 
 		<div>
-			Customer: <br>
-			帳號: <input type="text" id="accountC" value="victor8201@ymail.com" placeholder="請輸入帳號"><br>
-			密碼: <input type="password" id="passwordC" value="sL2kvW3jhA7wtRF0" placeholder="請輸入密碼"><br>
+			Customer User: <br>
+			帳號: <input type="text" id="accountC" value="t104340502@ntut.org.tw" placeholder="請輸入帳號"><br>
+			密碼: <input type="password" id="passwordC" value="hC9zuJM1oV1fRC1f" placeholder="請輸入密碼"><br>
 			<button style="margin: 5px" @click="showDevicesCustomer">顯示您的Devices</button>
 		</div>
 		<div id="devices"></div>

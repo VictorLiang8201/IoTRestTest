@@ -21,8 +21,8 @@
 <body>
     <div id="main" class="container-fluid d-flex flex-wrap justify-content-center">
         <div class="row my-3">
-			Customer Title: <input type="text" id="customerTitle" placeholder="請輸入Title" class="my-2">
-			User E-mail: <input type="text" id="userEmail" placeholder="請輸入信箱" class="mb-2">
+			Customer Title: <input type="text" id="customerTitle" value="IoTRestTest" placeholder="請輸入Title" class="my-2">
+			User E-mail: <input type="text" id="userEmail" value="t104340502@ntut.org.tw" placeholder="請輸入信箱" class="mb-2">
             <button class="mb-2" @click="regist">註冊</button>
             
 		<hr style="color: darkgreen;" size="5px">
@@ -39,14 +39,14 @@
 		methods: {
 			regist: () => {
 				let custTitle = $('#customerTitle').val();
-// 				let userEmail = $('#userEmail').val();
+				let userEmail = $('#userEmail').val();
 				
 				$.ajax({
 					url: '/IoTRestTest/customers',
 					type: 'POST',
 					data: {
 						custTitle: custTitle,
-// 						userEmail: userEmail,
+						userEmail: userEmail,
 					},
 					success: () => {
 						alert("註冊成功");

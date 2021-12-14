@@ -19,6 +19,7 @@ import org.thingsboard.server.common.data.User;
 import org.thingsboard.server.common.data.id.CustomerId;
 import org.thingsboard.server.common.data.page.PageData;
 import org.thingsboard.server.common.data.page.PageLink;
+import org.thingsboard.server.common.data.security.Authority;
 
 import iotrest.test.springboot.MVC.service.CustomerService;
 import lombok.AllArgsConstructor;
@@ -32,8 +33,11 @@ public class CustomerController {
 	CustomerService customerService;
 
 	@GetMapping("/devices")
-	public Map<String, Object> getDevices(@RequestParam(name = "account") String account,
-			@RequestParam(name = "password") String password, @RequestParam(name = "type") String type) {
+	public Map<String, Object> getDevices(
+			@RequestParam(name = "account") String account,
+			@RequestParam(name = "password") String password,
+			@RequestParam(name = "type") String type
+	) {
 		Map<String, Object> map = new HashMap<>();
 
 		String url = "https://demo.thingsboard.io:443";
@@ -50,7 +54,7 @@ public class CustomerController {
 					for (Device device : pageData.getData()) {
 						devices.add(device);
 					}
-					pageLink.nextPageLink();
+					pageLink = pageLink.nextPageLink();
 				} while (pageData.hasNext());
 			}
 		} else {
@@ -59,7 +63,7 @@ public class CustomerController {
 				for (Device device : pageData.getData()) {
 					devices.add(device);
 				}
-				pageLink.nextPageLink();
+				pageLink = pageLink.nextPageLink();
 			} while (pageData.hasNext());
 		}
 		restClient.logout();
@@ -73,19 +77,39 @@ public class CustomerController {
 	}
 
 	@PostMapping("/customers")
-	public void saveCustomer(@RequestParam(name = "custTitle") String custTitle,
-			@RequestParam(name = "userEmail", required = false) String userEmail) {
-
+	public void saveCustomer(
+			@RequestParam(name = "custTitle") String custTitle,
+			@RequestParam(name = "userEmail") String userEmail) {
+		
+		// Login in
 		String url = "https://demo.thingsboard.io:443";
 		RestClient restClient = new RestClient(url);
-		restClient.login("confus8201@gmail.com", "urPX4duVW5fHR2eU");
+		restClient.login("victorliang8201@gmail.com", "ZAsw6KNji9GEcx1D");
+		
+		// Customer Register
 		Customer customer = new Customer();
 		customer.setTitle(custTitle);
 		restClient.saveCustomer(customer);
+		CustomerId customerId = null;
+		
+		// User Register
 		User user = new User();
-		user.setEmail("IotRestTest@gmail.com");
-		user.setAuthority(null);
-		restClient.saveUser(user, false);
+		PageLink pageLink = new PageLink(10);
+		PageData<Customer> pageData = restClient.getCustomers(pageLink);
+		do {
+			List<Customer> customers = restClient.getCustomers(pageLink).getData();
+			for (Customer cust : customers) {
+				if (cust.getTitle().equals(custTitle)) {
+					customerId = cust.getId();
+					break;
+				}
+			}
+			pageLink = pageLink.nextPageLink();
+		} while (pageData.hasNext());
+		user.setEmail(userEmail);
+		user.setCustomerId(customerId);
+		user.setAuthority(Authority.CUSTOMER_USER);
+		restClient.saveUser(user, true);
 		restClient.logout();
 		restClient.close();
 	}

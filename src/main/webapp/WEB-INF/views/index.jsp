@@ -24,15 +24,15 @@
 	<div id="main" align="center">
 		<div>
 			Tenant Administrator: <br>
-			帳號: <input type="text" id="accountT" value="victorliang8201@gmail.com" placeholder="請輸入帳號"><br>
-			密碼: <input type="password" id="passwordT" value="ZAsw6KNji9GEcx1D" placeholder="請輸入密碼"><br>
+			帳號: <input type="text" id="accountT" placeholder="請輸入帳號"><br>
+			密碼: <input type="password" id="passwordT" placeholder="請輸入密碼"><br>
 			<button style="margin: 5px" @click="showDevicesTenant">顯示您的設備</button>
 		</div>
 
 		<div>
 			Customer User: <br>
-			帳號: <input type="text" id="accountC" value="t104340502@ntut.org.tw" placeholder="請輸入帳號"><br>
-			密碼: <input type="password" id="passwordC" value="hC9zuJM1oV1fRC1f" placeholder="請輸入密碼"><br>
+			帳號: <input type="text" id="accountC" placeholder="請輸入帳號"><br>
+			密碼: <input type="password" id="passwordC" placeholder="請輸入密碼"><br>
 			<button style="margin: 5px" @click="showDevicesCustomer">顯示您的設備</button>
 		</div>
 		<div id="devices"></div>

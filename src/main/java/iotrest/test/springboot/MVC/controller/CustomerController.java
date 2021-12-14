@@ -89,7 +89,7 @@ public class CustomerController {
 		// 登入資訊
 		String url = "https://demo.thingsboard.io:443";
 		RestClient restClient = new RestClient(url);
-		restClient.login("victorliang8201@gmail.com", "ZAsw6KNji9GEcx1D");
+		restClient.login("account@account.com", "password");
 		
 		// Customer 註冊
 		Customer customer = new Customer();
